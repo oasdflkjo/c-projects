@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// count average of in array
+// count average of int array
 
 // find index of biggest number in array
 
