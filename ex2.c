@@ -33,6 +33,7 @@ int median(int given_numbers[], int array_length)
         }
     }
 
+    // there is something in here that i dont understan prolly doesn't return right values
     // if size is odd return middle else return average of 2 midlest
     if(array_length % 2 == 0){
         int ret = given_numbers[array_length/2] + given_numbers[(array_length/2)+1];
