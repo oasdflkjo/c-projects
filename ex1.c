@@ -2,11 +2,6 @@
 #include <string.h>
 
 // count average of int array
-
-// find index of biggest number in array
-
-// reverse array with 2 passes cos we don't know its length beforehand
-
 int average(int given_numbers[], int array_length)
 {
     int temp = 0;
@@ -17,6 +12,7 @@ int average(int given_numbers[], int array_length)
     return temp/array_length;
 }
 
+// find index of biggest number in array
 int find_big(int a[], int c)
 {
     int temp = 0;
@@ -32,6 +28,7 @@ int find_big(int a[], int c)
     return indexOfNumber;
 }
 
+// reverse array with 2 passes cos we don't know its length beforehand
 void reverse_array(char a[])
 {
     int sizeOfArray = strlen(a);
@@ -47,22 +44,27 @@ void reverse_array(char a[])
         a[j]=mem;
         j--;
     }
-    
 }
 
 int main(){
-/* 
+
+    // 1
+    /* 
     int my_array[]={4,2,1,5,3};
     printf("%d",average(my_array,5));
- */
+    */
 
-/* 
+    // 2
+    /* 
     int a[]={1,2,3,4,5,66,7,8};
     printf("%d",find_big(a,7));
- */
-    int i;
+    */
+
+    // 3
+    /* int i;
     char a[]="Hello";
     reverse_array(a);
     for(i=0;i<5;i++)
-    printf("%c ",a[i]);
+    printf("%c ",a[i]); 
+    */
 }

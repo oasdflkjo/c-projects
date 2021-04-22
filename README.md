@@ -1,2 +1,2 @@
 # c-projects
-leetcode stuff in c
+c algos drills
