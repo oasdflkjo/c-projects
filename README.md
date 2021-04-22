@@ -1,2 +1,2 @@
 # c-projects
-c algos drills
+c algo drills
