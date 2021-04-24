@@ -2,5 +2,5 @@
 .exe
 .vscode/
 TODO.txt
-*/.exe
-*/.o
+/*/*.exe
+/*/*.o
