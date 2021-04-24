@@ -1,3 +1,6 @@
 # compiled programs
 .exe
 .vscode/
+TODO.txt
+*/.exe
+*/.o
