@@ -22,6 +22,23 @@ int removeDuplicates(int nums[], int numsSize)
     return j;
 }
 
+// TODO why t0 solution is better ??
+/* 
+    int removeDuplicates(int* nums, int numsSize){
+    int j=1;
+    if(numsSize==0)j=0;
+    for(int i=1;i<numsSize;i++)
+    {
+        if(nums[i]!=nums[i-1] )
+        {
+            nums[j]=nums[i];
+            j++;
+        }              
+    }    
+    return j;
+} 
+*/
+
 int printArray(int array[], int arrayLength)
 {
     for (int i = 0; i < arrayLength; i++)
