@@ -2,26 +2,23 @@
 // shift alphabetically and cycle from z->a and Z->A
 // ignore non alphabet characters
 
-// TODO without string.h and with write instead of printf
+// TODO without string.h and with write() instead of printf()
 
-//#include <unistd.h>
+//#include <unistd.h> use this when using write()
 #include <stdio.h>
-#include <string.h>
 
 int rotone_main(int argc, char **argv)
 {
+    // on error should return error code???
     if (argc == 1)
     {
+        // making pointer to first character of the first string
         char *string = argv[0];
-        int length = strlen(string);
+        char temp;
 
-        char temp, *temp_string;
         while (*string != '\0')
         {
-            // not shure why i can't manipulate *string ???
             temp = *string;
-            // manipulate char according to specs
-            // and print it
             if (temp >= 'A' && temp <= 'Z')
             {
                 if (temp == 'Z')
@@ -40,9 +37,13 @@ int rotone_main(int argc, char **argv)
             string++;
         }
         printf("\n");
+        return 0;
     }
     else
+    {
         printf("\n");
+        return 0;
+    }
 }
 
 int main(void)
