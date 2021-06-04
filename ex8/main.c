@@ -1,4 +1,4 @@
-// Write prints modified string
+// function that prints modified string
 // shift alphabetically and cycle from z->a and Z->A
 // ignore other characters
 
@@ -18,10 +18,12 @@ int rotone_main(int argc, char **argv)
         char temp, *temp_string;
         while (*string != '\0')
         {
+            // not shure why i can't manipulate *string ???
             temp = *string;
+            // manipulate char according to specs
+            // and print it
             if (temp >= 'A' && temp <= 'Z')
             {
-
                 if (temp == 'Z')
                     temp = 'A';
                 else
@@ -29,7 +31,6 @@ int rotone_main(int argc, char **argv)
             }
             if (temp >= 'a' && temp <= 'z')
             {
-                temp = *string;
                 if (temp == 'z')
                     temp = 'a';
                 else
