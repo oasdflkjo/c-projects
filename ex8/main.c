@@ -1,6 +1,6 @@
 // function that prints modified string
 // shift alphabetically and cycle from z->a and Z->A
-// ignore other characters
+// ignore non alphabet characters
 
 // TODO without string.h and with write instead of printf
 
