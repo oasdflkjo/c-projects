@@ -1,0 +1,10 @@
+Program that compares different functions that solve same problem.
+
+ - Execution time average
+ - Memory footprint
+
+ Define test cases
+
+ Run test cases on both/multiple functions
+
+ Generate file that contains findings
