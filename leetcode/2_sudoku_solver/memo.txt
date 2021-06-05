@@ -1,0 +1,4 @@
+Trying to make sudoku solver with c
+
+first just get basic funtionality working in single file
+then format eit to multiple files
