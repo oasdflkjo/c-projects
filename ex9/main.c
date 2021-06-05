@@ -10,7 +10,7 @@ void swap(char *a, char *b)
 
 void reverseString(char *s, int sSize)
 {
-    if (sSize == 0)
+    if (sSize == 0 || sSize == 1)
         return;
     if (s == NULL)
         return;

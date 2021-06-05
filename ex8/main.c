@@ -2,7 +2,7 @@
 // shift alphabetically and cycle from z->a and Z->A
 // ignore non alphabet characters
 
-// TODO without string.h and with write() instead of printf()
+// TODO with write() instead of printf()
 
 //#include <unistd.h> use this when using write()
 #include <stdio.h>
