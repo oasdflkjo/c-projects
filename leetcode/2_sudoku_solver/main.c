@@ -6,6 +6,8 @@
 // arrays starting from 0 and postions starting at 1
 // when thinking in math terms is goind to be a problem :)
 
+// prolly need to comment alot cos cos of all the spagetti
+
 #include <stdio.h>
 struct postion
 {
@@ -13,6 +15,7 @@ struct postion
     int col;
 };
 
+// simple print for 9x9 sudoku
 void print_sudoku(int sudoku[9][9])
 {
     for (size_t i = 0; i < 9; i++)
@@ -27,8 +30,10 @@ void print_sudoku(int sudoku[9][9])
         if (i == 2 || i == 5)
             printf("\n");
     }
+    printf("\n");
 }
 
+// finds next empty postion in 9x9 sudoku
 struct postion find_next_empty(int sudoku[9][9])
 {
     int row, col;
@@ -51,14 +56,89 @@ struct postion find_next_empty(int sudoku[9][9])
     return p;
 }
 
-void make_guess(int **sudoku, struct postion p)
+// test if guess is found on row
+int guess_row(int sudoku[9][9], struct postion p, int guess)
 {
-    // 987 654 321
-    // 000 000 000 is 9 byte variable
-    // iterate row use logic or to togle bits
-    // iterate col use logic or to togle bits
-    // find subsquare
-    // iterate subsquare use logic or to togle bits
+
+    for (size_t i = 0; i < 9; i++)
+    {
+        if (sudoku[p.row][i] == guess)
+            return 0;
+    }
+    return 1;
+}
+
+// test if guess is found on col
+int guess_col(int sudoku[9][9], struct postion p, int guess)
+{
+
+    for (size_t i = 0; i < 9; i++)
+    {
+        if (sudoku[i][p.col] == guess)
+            return 0;
+    }
+    return 1;
+}
+
+// test if guess is found on sub square
+int guess_sub_square(int sudoku[9][9], struct postion p, int guess)
+{
+    int row_start = p.row / 3 * 3;
+    int col_start = p.col / 3 * 3;
+
+    for (size_t row = 0; row < 3; row++)
+    {
+        for (size_t col = 0; col < 3; col++)
+        {
+            if (sudoku[row][col] == guess)
+                return 0;
+        }
+    }
+    return 1;
+}
+
+// combined guess function
+int guess_valid(int sudoku[9][9], struct postion p, int guess)
+{
+    if (guess_row(sudoku, p, guess))
+    {
+        if (guess_col(sudoku, p, guess))
+        {
+            if (guess_sub_square(sudoku, p, guess))
+            {
+                printf("guess %d is valid\n", guess);
+                return 1;
+            }
+        }
+    }
+    printf("guess %d not valid\n", guess);
+    return 0;
+}
+
+int solve_sudoku(int sudoku[9][9])
+{
+
+    struct postion p = find_next_empty(sudoku);
+    // TODO empty cell gets wrong postions
+    printf("\nempty cell is %d %d \n", p.row, p.col);
+    if (p.row == 9 && p.col == 9)
+    {
+        printf("ends in here");
+        return 1;
+    }
+
+    for (int guess = 1; guess <= 9; guess++)
+    {
+        if (guess_valid(sudoku, p, guess))
+        {
+            printf("placing guess %d to [%d][%d]\n", guess, p.row + 1, p.col + 1);
+            sudoku[p.row][p.col] = guess;
+            print_sudoku(sudoku);
+            solve_sudoku(sudoku);
+        }
+    }
+    printf("return one layer back\n");
+    return 0;
 }
 
 void main()
@@ -76,7 +156,7 @@ void main()
 
     print_sudoku(sudoku);
 
-    struct postion empty;
-    empty = find_next_empty(sudoku);
-    printf("\n%d %d \n", empty.row, empty.col);
+    solve_sudoku(sudoku);
+
+    // now how to write recursive funcion that solves the sudoku???
 }

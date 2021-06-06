@@ -1,4 +1,27 @@
+Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
 Trying to make sudoku solver with c
 
 first just get basic funtionality working in single file
 then format eit to multiple files
+
+
+possible way to do this is to have 2 dimentional array of structs
+
+value
+guess
+subsquare
+
+how to solve subsquare problem
+
+try function seems to be best
+
+try row(postion,int **sudoku,int try)
+try col()
+try sub()
+    
+is there i on this col
+is there i on this subsquare
+
+
