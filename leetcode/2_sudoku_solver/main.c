@@ -2,6 +2,9 @@
 // using recursive backtrack to monitor game state
 #include <stdio.h>
 
+#define FALSE 0
+#define TRUE 1
+
 int GLOBAL_COUNTER = 0;
 
 // simple print sudoku to console
@@ -22,16 +25,15 @@ void print_sudoku(int sudoku[9][9])
     printf("\n");
 }
 
-// guess validator
-// returns "false" if guess is not valid
+// guess validators
 int guess_row(int sudoku[9][9], int row, int guess)
 {
     for (size_t i = 0; i < 9; i++)
     {
         if (sudoku[row][i] == guess)
-            return 0;
+            return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 int guess_col(int sudoku[9][9], int col, int guess)
@@ -39,9 +41,9 @@ int guess_col(int sudoku[9][9], int col, int guess)
     for (size_t i = 0; i < 9; i++)
     {
         if (sudoku[i][col] == guess)
-            return 0;
+            return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 int guess_sub_square(int sudoku[9][9], int row, int col, int guess)
@@ -56,10 +58,10 @@ int guess_sub_square(int sudoku[9][9], int row, int col, int guess)
         for (int j = col; col + 3 < 3; j++)
         {
             if (sudoku[row][col] == guess)
-                return 0;
+                return FALSE;
         }
     }
-    return 1;
+    return TRUE;
 }
 
 int guess_valid(int sudoku[9][9], int row, int col, int guess)
@@ -70,11 +72,11 @@ int guess_valid(int sudoku[9][9], int row, int col, int guess)
         {
             if (guess_sub_square(sudoku, row, col, guess))
             {
-                return 1;
+                return TRUE;
             }
         }
     }
-    return 0;
+    return FALSE;
 }
 
 // recursive backtracking algo
@@ -98,7 +100,7 @@ int solve_sudoku(int sudoku[9][9])
                         sudoku[row][col] = number;
                         if (solve_sudoku(sudoku))
                         {
-                            return 1;
+                            return TRUE;
                         }
                         else
                         {
@@ -106,11 +108,11 @@ int solve_sudoku(int sudoku[9][9])
                         }
                     }
                 }
-                return 0;
+                return FALSE;
             }
         }
     }
-    return 1;
+    return TRUE;
 }
 
 int main()
