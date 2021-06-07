@@ -1,8 +1,13 @@
 .vscode/
 TODO.txt
 
-.exe
+
+*.exe
 /*.exe
 /*/*.exe
 /*/*/*.exe
+
+*.o
+/*.o
 /*/*.o
+/*/*/*.o
