@@ -48,13 +48,10 @@ uint8_t count_ones_lookup(uint8_t x)
     return lookup_table[x];
 }
 
-// just a helper function to generate lookup table for this program
-// need to manually add 2 last entrys cons too dumb to write right
-// generator algo
 void generate_lookup_table()
 {
-    uint8_t number = 0b00000000;
-    for (uint8_t i = 1; i < 255; i++)
+    uint16_t number = 0b00000000;
+    for (uint16_t i = 1; i < 257; i++)
     {
         printf("%u,", count_ones_loop(number++));
         if (i % 10 == 0 && i != 0)
