@@ -51,21 +51,23 @@ uint8_t count_ones_lookup(uint8_t x)
 void generate_lookup_table()
 {
     uint16_t number = 0b00000000;
-    for (uint16_t i = 1; i < 257; i++)
+    for (uint16_t i = 1; i < 256; i++)
     {
         printf("%u,", count_ones_loop(number++));
         if (i % 10 == 0 && i != 0)
             printf("\n");
     }
+    printf("%u", count_ones_loop(number));
     printf("\n");
 }
 
 int main()
 {
-    uint8_t number = 0b11111111;
+    /*     uint8_t number = 0b11111111;
     printf("%u this was loop operation\n", count_ones_loop(number));
     printf("%u this was lookup operation\n", count_ones_lookup(number));
     number = 0b00000000;
     printf("%u this was loop operation\n", count_ones_loop(number));
-    printf("%u this was lookup operation\n", count_ones_lookup(number));
+    printf("%u this was lookup operation\n", count_ones_lookup(number)); */
+    generate_lookup_table();
 }
