@@ -1,4 +1,4 @@
-// demonstration of loopkup table usage
+// demonstration of lookup table usage
 // shifting program resource usage to memory use
 // instead of cup cycles
 
@@ -51,7 +51,7 @@ uint8_t count_ones_lookup(uint8_t x)
 void generate_lookup_table()
 {
     uint16_t number = 0b00000000;
-    for (uint16_t i = 1; i < 256; i++)
+    for (uint16_t i = 0; i < 256; i++)
     {
         printf("%u,", count_ones_loop(number++));
         if (i % 10 == 0 && i != 0)
