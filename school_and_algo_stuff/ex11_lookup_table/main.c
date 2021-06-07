@@ -63,11 +63,10 @@ void generate_lookup_table()
 
 int main()
 {
-    /*     uint8_t number = 0b11111111;
+    uint8_t number = 0b11111111;
     printf("%u this was loop operation\n", count_ones_loop(number));
     printf("%u this was lookup operation\n", count_ones_lookup(number));
     number = 0b00000000;
     printf("%u this was loop operation\n", count_ones_loop(number));
-    printf("%u this was lookup operation\n", count_ones_lookup(number)); */
-    generate_lookup_table();
+    printf("%u this was lookup operation\n", count_ones_lookup(number));
 }
