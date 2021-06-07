@@ -47,8 +47,8 @@ int validate_col(int sudoku[9][9], int col, int guess)
 
 int validate_sub_square(int sudoku[9][9], int row, int col, int guess)
 {
-    // divide multply trick is used to determine
-    // in which subsquare we are
+    // divide multiply trick is used to determine
+    // in which sub square we are
     row = row / 3 * 3;
     col = col / 3 * 3;
 
@@ -129,5 +129,5 @@ int main()
 
     solve_sudoku(sudoku);
     print_sudoku(sudoku);
-    printf("%d functions used to solve this sudoku\n", GLOBAL_COUNTER);
+    printf("%d recursive functions used to solve this sudoku\n", GLOBAL_COUNTER);
 }
