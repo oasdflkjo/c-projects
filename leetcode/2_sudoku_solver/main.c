@@ -5,9 +5,8 @@
 #define FALSE 0
 #define TRUE 1
 
-int GLOBAL_COUNTER = 0;
+unsigned GLOBAL_COUNTER = 0;
 
-// simple print sudoku to console
 void print_sudoku(int sudoku[9][9])
 {
     for (size_t i = 0; i < 9; i++)
@@ -25,8 +24,8 @@ void print_sudoku(int sudoku[9][9])
     printf("\n");
 }
 
-// guess validators
-int guess_row(int sudoku[9][9], int row, int guess)
+// 3 validator functions and one supervalidator
+int validate_row(int sudoku[9][9], int row, int guess)
 {
     for (size_t i = 0; i < 9; i++)
     {
@@ -36,7 +35,7 @@ int guess_row(int sudoku[9][9], int row, int guess)
     return TRUE;
 }
 
-int guess_col(int sudoku[9][9], int col, int guess)
+int validate_col(int sudoku[9][9], int col, int guess)
 {
     for (size_t i = 0; i < 9; i++)
     {
@@ -46,10 +45,10 @@ int guess_col(int sudoku[9][9], int col, int guess)
     return TRUE;
 }
 
-int guess_sub_square(int sudoku[9][9], int row, int col, int guess)
+int validate_sub_square(int sudoku[9][9], int row, int col, int guess)
 {
     // divide multply trick is used to determine
-    // subsquare starting position
+    // in which subsquare we are
     row = row / 3 * 3;
     col = col / 3 * 3;
 
@@ -64,13 +63,13 @@ int guess_sub_square(int sudoku[9][9], int row, int col, int guess)
     return TRUE;
 }
 
-int guess_valid(int sudoku[9][9], int row, int col, int guess)
+int validate_guess(int sudoku[9][9], int row, int col, int guess)
 {
-    if (guess_row(sudoku, row, guess))
+    if (validate_row(sudoku, row, guess))
     {
-        if (guess_col(sudoku, col, guess))
+        if (validate_col(sudoku, col, guess))
         {
-            if (guess_sub_square(sudoku, row, col, guess))
+            if (validate_sub_square(sudoku, row, col, guess))
             {
                 return TRUE;
             }
@@ -93,11 +92,11 @@ int solve_sudoku(int sudoku[9][9])
         {
             if (sudoku[row][col] == 0)
             {
-                for (int number = 1; number <= 9; number++)
+                for (int guess = 1; guess <= 9; guess++)
                 {
-                    if (guess_valid(sudoku, row, col, number))
+                    if (validate_guess(sudoku, row, col, guess))
                     {
-                        sudoku[row][col] = number;
+                        sudoku[row][col] = guess;
                         if (solve_sudoku(sudoku))
                         {
                             return TRUE;
