@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 float minf(float, float);
-u_int64_t mini(u_int64_t, u_int64_t);
+u_int32_t mini(u_int32_t, u_int32_t);
 
 // TODO why visual stuodio code scrambles this define to be unreadable
 #define min(a, b) _Generic((a), float              \
-                           : minf(a, b), u_int64_t \
+                           : minf(a, b), u_int32_t \
                            : mini(a, b))
 
 float minf(float a, float b)
@@ -17,7 +17,7 @@ float minf(float a, float b)
         return b;
 }
 
-u_int64_t mini(u_int64_t a, u_int64_t b)
+u_int32_t mini(u_int32_t a, u_int32_t b)
 {
     if (a > b)
         return a;
@@ -31,7 +31,7 @@ __INT_FAST8_TYPE__ main()
     a = 0.1, b = 0.2;
     printf("%.1f\n", min(a, b));
 
-    u_int64_t c, d;
+    u_int32_t c, d;
     c = 1, d = 2;
-    printf("%lu\n", min(c, d));
+    printf("%u\n", min(c, d));
 }
