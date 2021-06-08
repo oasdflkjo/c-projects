@@ -20,6 +20,6 @@ int main()
 
     while ((ch = fgetc(fp)) != EOF)
         printf("%c", ch);
-
+    printf("\n");
     fclose(fp);
 }
