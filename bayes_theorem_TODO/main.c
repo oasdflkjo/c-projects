@@ -16,7 +16,7 @@
 
 // TODO explanation on how to calculate those values
 
-// return bayesien probabilty
+// return bayes probabilty
 double calculate_bayes(long double prior,
                        long double sensitivity,
                        long double specifity)
