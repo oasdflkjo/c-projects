@@ -2,72 +2,65 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-// ctrl c v geeksforgeeks
-
-/* Link list node */
-struct Node {
-    int data;
-    struct Node* next;
+struct node
+{
+    int value;
+    struct node *next;
 };
+typedef struct node node_t;
 
-/* Function to push a node */
-void push(struct Node** head_ref, int new_data)
+void print_llist(node_t *head)
 {
-    struct Node* new_node
-        = (struct Node*)malloc(sizeof(struct Node));
-    new_node->data = new_data;
-    new_node->next = (*head_ref);
-    (*head_ref) = new_node;
-}
-/* TODO make delete last */
-
-/* TODO make delete from index */
-
-/* Function to print linked list */
-void printList(struct Node* head)
-{
-    struct Node* temp = head;
-    while (temp != NULL) {
-        printf("%d  ", temp->data);
+    node_t *temp = head;
+    while (temp != NULL)
+    {
+        printf("%d - ", temp->value);
         temp = temp->next;
     }
+    printf("\n");
 }
 
-/* Function to reverse the linked list */
-static void reverse(struct Node** head_ref)
+node_t *create_new_node(int value)
 {
-    struct Node* prev = NULL;
-    struct Node* current = *head_ref;
-    struct Node* next = NULL;
-    while (current != NULL) {
-        // Store next
-        next = current->next;
- 
-        // Reverse current node's pointer
-        current->next = prev;
- 
-        // Move pointers one position ahead.
-        prev = current;
-        current = next;
+    node_t *result = malloc(sizeof(node_t));
+    result->value = value;
+    result->next = NULL;
+    return result;
+}
+
+// what is happening here with ** pointer to a pointer???
+node_t *insert_at_head(node_t **head, node_t *node_to_insert)
+{
+    node_to_insert->next = *head;
+    *head = node_to_insert;
+    return node_to_insert;
+}
+
+// goes trough the list and returns pointer to the node
+// that has the searched value
+node_t *find_node(node_t *head, int val)
+{
+    node_t *tmp = head;
+    while (tmp != NULL)
+    {
+        if (tmp->value == val)
+            return tmp;
     }
-    *head_ref = prev;
+    return NULL;
 }
 
-/* Driver code*/
-int main()
+int main(void)
 {
-    /* Start with the empty list */
-    struct Node* linked_list = NULL;
- 
-    push(&linked_list, 20);
-    push(&linked_list, 4);
-    push(&linked_list, 15);
-    push(&linked_list, 85);
- 
-    printf("Given linked list\n");
-    printList(linked_list);
-    reverse(&linked_list);
-    printf("\nReversed Linked list \n");
-    printList(linked_list);
-    getchar();
+    node_t *head = NULL;
+    node_t *tmp;
+
+    for (size_t i = 0; i < 25; i++)
+    {
+        tmp = create_new_node(i);
+        head = insert_at_head(&head, tmp);
+    }
+
+    print_llist(head);
+
+    return 0;
 }
